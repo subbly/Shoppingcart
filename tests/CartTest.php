@@ -1,9 +1,9 @@
 <?php
 
-use Gloudemans\Shoppingcart\Cart;
-use Gloudemans\Shoppingcart\CartCollection;
-use Gloudemans\Shoppingcart\CartRowCollection;
-use Gloudemans\Shoppingcart\CartRowOptionsCollection;
+use Subbly\Shoppingcart\Cart;
+use Subbly\Shoppingcart\CartCollection;
+use Subbly\Shoppingcart\CartRowCollection;
+use Subbly\Shoppingcart\CartRowOptionsCollection;
 use Mockery as m;
 
 require_once __DIR__.'/helpers/SessionMock.php';
@@ -85,13 +85,13 @@ class CartTest extends PHPUnit_Framework_TestCase {
 
 		$cartRow = $this->cart->get('c5417b5761c7fb837e4227a38870dd4d');
 
-		$this->assertInstanceOf('Gloudemans\Shoppingcart\CartRowOptionsCollection', $cartRow->options);
+		$this->assertInstanceOf('Subbly\Shoppingcart\CartRowOptionsCollection', $cartRow->options);
 		$this->assertEquals('large', $cartRow->options->size);
 		$this->assertEquals('red', $cartRow->options->color);
 	}
 
 	/**
-	 * @expectedException Gloudemans\Shoppingcart\Exceptions\ShoppingcartInvalidItemException
+	 * @expectedException Subbly\Shoppingcart\Exceptions\ShoppingcartInvalidItemException
 	 */
 	public function testCartThrowsExceptionOnEmptyItem()
 	{
@@ -101,7 +101,7 @@ class CartTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Gloudemans\Shoppingcart\Exceptions\ShoppingcartInvalidQtyException
+	 * @expectedException Subbly\Shoppingcart\Exceptions\ShoppingcartInvalidQtyException
 	 */
 	public function testCartThrowsExceptionOnNoneNumericQty()
 	{
@@ -111,7 +111,7 @@ class CartTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Gloudemans\Shoppingcart\Exceptions\ShoppingcartInvalidPriceException
+	 * @expectedException Subbly\Shoppingcart\Exceptions\ShoppingcartInvalidPriceException
 	 */
 	public function testCartThrowsExceptionOnNoneNumericPrice()
 	{
@@ -184,7 +184,7 @@ class CartTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Gloudemans\Shoppingcart\Exceptions\ShoppingcartInvalidRowIDException
+	 * @expectedException Subbly\Shoppingcart\Exceptions\ShoppingcartInvalidRowIDException
 	 */
 	public function testCartThrowsExceptionOnInvalidRowId()
 	{
@@ -252,7 +252,7 @@ class CartTest extends PHPUnit_Framework_TestCase {
 
 		$this->cart->add('293ad', 'Product 1', 1, 9.99);
 
-		$this->assertInstanceOf('Gloudemans\Shoppingcart\CartCollection', $this->cart->content());
+		$this->assertInstanceOf('Subbly\Shoppingcart\CartCollection', $this->cart->content());
 		$this->assertFalse($this->cart->content()->isEmpty());
 	}
 
@@ -266,7 +266,7 @@ class CartTest extends PHPUnit_Framework_TestCase {
 		$this->cart->add('293ad', 'Product 1', 1, 9.99);
 		$this->cart->destroy();
 
-		$this->assertInstanceOf('Gloudemans\Shoppingcart\CartCollection', $this->cart->content());
+		$this->assertInstanceOf('Subbly\Shoppingcart\CartCollection', $this->cart->content());
 		$this->assertTrue($this->cart->content()->isEmpty());
 	}
 
@@ -341,7 +341,7 @@ class CartTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Gloudemans\Shoppingcart\Exceptions\ShoppingcartInstanceException
+	 * @expectedException Subbly\Shoppingcart\Exceptions\ShoppingcartInstanceException
 	 */
 	public function testCartThrowsExceptionOnEmptyInstance()
 	{
@@ -355,7 +355,7 @@ class CartTest extends PHPUnit_Framework_TestCase {
 
 		$this->cart->add('293ad', 'Product 1', 1, 9.99);
 
-		$this->assertInstanceOf('Gloudemans\Shoppingcart\CartCollection', $this->cart->content());
+		$this->assertInstanceOf('Subbly\Shoppingcart\CartCollection', $this->cart->content());
 	}
 
 	public function testCartCollectionHasCartRowCollection()
@@ -365,7 +365,7 @@ class CartTest extends PHPUnit_Framework_TestCase {
 
 		$this->cart->add('293ad', 'Product 1', 1, 9.99);
 
-		$this->assertInstanceOf('Gloudemans\Shoppingcart\CartRowCollection', $this->cart->content()->first());
+		$this->assertInstanceOf('Subbly\Shoppingcart\CartRowCollection', $this->cart->content()->first());
 	}
 
 	public function testCartRowCollectionHasCartRowOptionsCollection()
@@ -375,7 +375,7 @@ class CartTest extends PHPUnit_Framework_TestCase {
 
 		$this->cart->add('293ad', 'Product 1', 1, 9.99);
 
-		$this->assertInstanceOf('Gloudemans\Shoppingcart\CartRowOptionsCollection', $this->cart->content()->first()->options);
+		$this->assertInstanceOf('Subbly\Shoppingcart\CartRowOptionsCollection', $this->cart->content()->first()->options);
 	}
 
 	public function testCartCanAssociateWithModel()
@@ -414,7 +414,7 @@ class CartTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Gloudemans\Shoppingcart\Exceptions\ShoppingcartUnknownModelException
+	 * @expectedException Subbly\Shoppingcart\Exceptions\ShoppingcartUnknownModelException
 	 */
 	public function testCartThrowsExceptionOnUnknownModel()
 	{
