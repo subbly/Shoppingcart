@@ -1,12 +1,12 @@
 {
-    "name": "gloudemans/shoppingcart",
-    "description": "Laravel 4 Shoppingcart",
-    "keywords": ["laravel", "shoppingcart"],
+    "name": "subbly/shoppingcart",
+    "description": "Subbly Shoppingcart",
+    "keywords": ["subbly", "shoppingcart"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Rob Gloudemans",
-            "email": "Rob_Gloudemans@hotmail.com"
+            "name": "Rob Subbly",
+            "email": "Rob_Subbly@hotmail.com"
         }
     ],
     "require": {
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Gloudemans\\Shoppingcart": "src/"
+            "Subbly\\Shoppingcart": "src/"
         }
     },
     "minimum-stability": "dev"

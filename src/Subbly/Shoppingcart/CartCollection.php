@@ -1,4 +1,4 @@
-<?php namespace Gloudemans\Shoppingcart;
+<?php namespace Subbly\Shoppingcart;
 
 use Illuminate\Support\Collection;
 

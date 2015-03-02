@@ -1,4 +1,4 @@
-<?php namespace Gloudemans\Shoppingcart\Facades;
+<?php namespace Subbly\Shoppingcart\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
