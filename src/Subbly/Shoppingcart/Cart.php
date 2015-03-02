@@ -96,7 +96,7 @@ class Cart {
 	 * @param float  	    $price    Price of one item
 	 * @param array  	    $options  Array of additional options, such as 'size' or 'color'
 	 */
-	public function add($id, $name = null, $qty = null, $price = null, array $options = array())
+	public function add($id, $sku = null, $name = null, $qty = null, $price = null, array $options = array())
 	{
 		// If the first parameter is an array we need to call the add() function again
 		if(is_array($id))
@@ -111,7 +111,7 @@ class Cart {
 				foreach($id as $item)
 				{
 					$options = array_get($item, 'options', array());
-					$this->addRow($item['id'], $item['name'], $item['qty'], $item['price'], $options);
+					$this->addRow($item['id'], $item['sku'], $item['name'], $item['qty'], $item['price'], $options);
 				}
 
 				// Fire the cart.batched event
@@ -125,7 +125,7 @@ class Cart {
 			// Fire the cart.add event
 			$this->event->fire('cart.add', array_merge($id, array('options' => $options)));
 
-			$result = $this->addRow($id['id'], $id['name'], $id['qty'], $id['price'], $options);
+			$result = $this->addRow($id['id'], $id['sku'], $id['name'], $id['qty'], $id['price'], $options);
 
 			// Fire the cart.added event
 			$this->event->fire('cart.added', array_merge($id, array('options' => $options)));
@@ -134,12 +134,12 @@ class Cart {
 		}
 
 		// Fire the cart.add event
-		$this->event->fire('cart.add', compact('id', 'name', 'qty', 'price', 'options'));
+		$this->event->fire('cart.add', compact('id', 'sku', 'name', 'qty', 'price', 'options'));
 
-		$result = $this->addRow($id, $name, $qty, $price, $options);
+		$result = $this->addRow($id, $sku, $name, $qty, $price, $options);
 
 		// Fire the cart.added event
-		$this->event->fire('cart.added', compact('id', 'name', 'qty', 'price', 'options'));
+		$this->event->fire('cart.added', compact('id', 'sku', 'name', 'qty', 'price', 'options'));
 
 		return $result;
 	}
@@ -325,7 +325,7 @@ class Cart {
 	 * @param float   $price    Price of one item
 	 * @param array   $options  Array of additional options, such as 'size' or 'color'
 	 */
-	protected function addRow($id, $name, $qty, $price, array $options = array())
+	protected function addRow($id, $sku, $name, $qty, $price, array $options = array())
 	{
 		if(empty($id) || empty($name) || empty($qty) || ! isset($price))
 		{
@@ -353,7 +353,7 @@ class Cart {
 		}
 		else
 		{
-			$cart = $this->createRow($rowId, $id, $name, $qty, $price, $options);
+			$cart = $this->createRow($rowId, $id, $sku, $name, $qty, $price, $options);
 		}
 
 		return $this->updateCart($cart);
@@ -464,13 +464,14 @@ class Cart {
 	 * @param  array   $options  Array of additional options, such as 'size' or 'color'
 	 * @return Subbly\Shoppingcart\CartCollection
 	 */
-	protected function createRow($rowId, $id, $name, $qty, $price, $options)
+	protected function createRow($rowId, $id, $sku, $name, $qty, $price, $options)
 	{
 		$cart = $this->getContent();
 
 		$newRow = new CartRowCollection(array(
 			'rowid' => $rowId,
 			'id' => $id,
+			'sku' => $sku,
 			'name' => $name,
 			'qty' => $qty,
 			'price' => $price,
