@@ -1,7 +1,7 @@
 {
-    "name": "gloudemans/shoppingcart",
-    "description": "Laravel 4 Shoppingcart",
-    "keywords": ["laravel", "shoppingcart"],
+    "name": "subbly/shoppingcart",
+    "description": "Subbly Shoppingcart",
+    "keywords": ["subbly", "shoppingcart"],
     "license": "MIT",
     "authors": [
         {
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Gloudemans\\Shoppingcart": "src/"
+            "Subbly\\Shoppingcart": "src/"
         }
     },
     "minimum-stability": "dev"

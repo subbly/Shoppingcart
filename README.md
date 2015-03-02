@@ -1,8 +1,6 @@
-## LaravelShoppingcart
-[![Build Status](https://travis-ci.org/Crinsane/LaravelShoppingcart.png?branch=master)](https://travis-ci.org/Crinsane/LaravelShoppingcart)
-[![Total Downloads](https://poser.pugx.org/gloudemans/shoppingcart/downloads.png)](https://packagist.org/packages/gloudemans/shoppingcart)
+## Subbly Shoppingcart
 
-A simple shoppingcart implementation for Laravel 4.
+A simple shoppingcart implementation for Subbly CMS.
 
 ## Installation
 
@@ -14,15 +12,6 @@ Install the package through [Composer](http://getcomposer.org/). Edit your proje
 "require": {
 	"laravel/framework": "4.2.*",
 	"gloudemans/shoppingcart": "~1.2"
-}
-```
-
-### Laravel 5
-
-```php
-"require": {
-	"laravel/framework": "5.0.*",
-	"gloudemans/shoppingcart": "dev-master"
 }
 ```
 
